@@ -13,5 +13,7 @@ public class Main {
         System.out.println(arr.getSize());
         arr.add(0, 10);
         System.out.println(arr);
+        arr.remove(1);
+        System.out.println(arr);
     }
 }
