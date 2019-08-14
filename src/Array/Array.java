@@ -36,16 +36,26 @@ public class Array<E> {
     }
 
     public void add(int index, E e) {
-        if (size == data.length)
-            throw new IllegalArgumentException("Add failed, Array is full.");
+
         if (index < 0 || index > size)
             throw new IllegalArgumentException("Add failed, Array is full.");
+
+        if (size == data.length)
+            resize(2 * data.length);
 
         for (int i = size - 1; i >= index; i--)
             data[i + 1] = data[i];
         data[index] = e;
         size++;
 
+    }
+
+    private void resize(int newCapacity) {
+        E[] newData = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 
     E get(int index) {
@@ -86,6 +96,8 @@ public class Array<E> {
         }
         size--;
         data[size] = null;
+        if (size == data.length / 2)
+            resize(data.length / 2 );
         return ret;
     }
 
