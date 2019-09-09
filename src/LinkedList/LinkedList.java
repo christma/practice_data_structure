@@ -30,4 +30,21 @@ public class LinkedList<E> {
         }
 
     }
+
+    private Node head;
+    int size;
+
+    public LinkedList() {
+        head = null;
+        size = 0;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
 }
