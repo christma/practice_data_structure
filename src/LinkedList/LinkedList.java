@@ -32,7 +32,7 @@ public class LinkedList<E> {
     }
 
     private Node head;
-    int size;
+    private int size;
 
     public LinkedList() {
         head = null;
@@ -43,8 +43,44 @@ public class LinkedList<E> {
         return size;
     }
 
+    // 返回是否为空
     public boolean isEmpty() {
         return size == 0;
     }
+
+    // 链表头添加元素
+    public void addFirst(E e) {
+        Node node = new Node(e);
+        node.next = head;
+        head = node;
+
+//        head = new Node(e,head);
+        size++;
+    }
+
+    public void add(int index, E e) {
+
+        if (index < 0 || index > size)
+            throw new IllegalArgumentException("Add failed. illegal index");
+
+        if (index == 0)
+            addFirst(e);
+        else {
+            Node prve = head;
+            for (int i = 0; i < index - 1; i++)
+                prve = prve.next;
+            Node node = new Node(e);
+            node.next = prve.next;
+            prve.next = node;
+//            prve.next = new Node(e,prve.next);
+            size++;
+
+        }
+    }
+
+    public void addLast(E e) {
+        add(size, e);
+    }
+
 
 }
