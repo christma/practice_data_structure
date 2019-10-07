@@ -31,11 +31,11 @@ public class LinkedList<E> {
 
     }
 
-    private Node head;
+    private Node dummyHead;
     private int size;
 
     public LinkedList() {
-        head = null;
+        dummyHead = new Node(null, null);
         size = 0;
     }
 
@@ -50,12 +50,8 @@ public class LinkedList<E> {
 
     // 链表头添加元素
     public void addFirst(E e) {
-        Node node = new Node(e);
-        node.next = head;
-        head = node;
-
+        add(0, e);
 //        head = new Node(e,head);
-        size++;
     }
 
     public void add(int index, E e) {
@@ -63,19 +59,18 @@ public class LinkedList<E> {
         if (index < 0 || index > size)
             throw new IllegalArgumentException("Add failed. illegal index");
 
-        if (index == 0)
-            addFirst(e);
-        else {
-            Node prve = head;
-            for (int i = 0; i < index - 1; i++)
-                prve = prve.next;
-            Node node = new Node(e);
-            node.next = prve.next;
-            prve.next = node;
-//            prve.next = new Node(e,prve.next);
-            size++;
 
-        }
+        Node prve = dummyHead;
+        for (int i = 0; i < index - 1; i++)
+            prve = prve.next;
+
+//        Node node = new Node(e);
+//        node.next = prve.next;
+//        prve.next = node;
+        prve.next = new Node(e, prve.next);
+        size++;
+
+
     }
 
     public void addLast(E e) {
@@ -83,4 +78,42 @@ public class LinkedList<E> {
     }
 
 
+    public E get(int index) {
+        if (index < 0 || index > size)
+            throw new IllegalArgumentException("Get failed. illegal index");
+
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size);
+    }
+
+    public void set(int index, E e) {
+        if (index < 0 || index > size)
+            throw new IllegalArgumentException("Update failed. illegal index");
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    public boolean contains(E e) {
+        Node cur = dummyHead.next;
+        for (int i = 0; i < size; i++) {
+            if (cur.e.equals(e))
+                return true;
+            cur = cur.next;
+        }
+        return false;
+    }
 }
