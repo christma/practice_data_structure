@@ -117,6 +117,29 @@ public class LinkedList<E> {
         return false;
     }
 
+    public E del(int index) {
+        if (index < 0 || index > size)
+            throw new IllegalArgumentException("Del failed. illegal index");
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        size--;
+        return retNode.e;
+    }
+
+    public E delFirst() {
+        return del(0);
+    }
+
+    public E delLast() {
+        return del(size - 1);
+    }
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

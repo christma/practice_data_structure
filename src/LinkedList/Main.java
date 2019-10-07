@@ -17,6 +17,14 @@ public class Main {
         linkedList.add(3, 999);
         System.out.println(linkedList);
 
+        linkedList.del(3);
+        System.out.println(linkedList);
+
+        linkedList.delFirst();
+        System.out.println(linkedList);
+
+        linkedList.delLast();
+        System.out.println(linkedList);
     }
 
 }
