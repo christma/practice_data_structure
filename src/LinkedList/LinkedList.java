@@ -61,7 +61,7 @@ public class LinkedList<E> {
 
 
         Node prve = dummyHead;
-        for (int i = 0; i < index - 1; i++)
+        for (int i = 0; i < index; i++)
             prve = prve.next;
 
 //        Node node = new Node(e);
@@ -115,5 +115,17 @@ public class LinkedList<E> {
             cur = cur.next;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            sb.append(cur + "-->");
+            cur = cur.next;
+        }
+        sb.append("Null");
+        return sb.toString();
     }
 }
