@@ -56,13 +56,15 @@ public class LinkedList<E> {
 
     public void add(int index, E e) {
 
-        if (index < 0 || index > size)
+        if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. illegal index");
+        }
 
 
         Node prve = dummyHead;
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++) {
             prve = prve.next;
+        }
 
 //        Node node = new Node(e);
 //        node.next = prve.next;
@@ -79,8 +81,9 @@ public class LinkedList<E> {
 
 
     public E get(int index) {
-        if (index < 0 || index > size)
+        if (index < 0 || index > size) {
             throw new IllegalArgumentException("Get failed. illegal index");
+        }
 
         Node cur = dummyHead.next;
         for (int i = 0; i < index; i++) {
@@ -98,8 +101,9 @@ public class LinkedList<E> {
     }
 
     public void set(int index, E e) {
-        if (index < 0 || index > size)
+        if (index < 0 || index > size) {
             throw new IllegalArgumentException("Update failed. illegal index");
+        }
         Node cur = dummyHead.next;
         for (int i = 0; i < index; i++) {
             cur = cur.next;
@@ -110,16 +114,18 @@ public class LinkedList<E> {
     public boolean contains(E e) {
         Node cur = dummyHead.next;
         for (int i = 0; i < size; i++) {
-            if (cur.e.equals(e))
+            if (cur.e.equals(e)) {
                 return true;
+            }
             cur = cur.next;
         }
         return false;
     }
 
     public E del(int index) {
-        if (index < 0 || index > size)
+        if (index < 0 || index > size) {
             throw new IllegalArgumentException("Del failed. illegal index");
+        }
         Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
             prev = prev.next;
