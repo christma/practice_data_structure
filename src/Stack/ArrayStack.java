@@ -47,7 +47,7 @@ public class ArrayStack<E> implements Stack<E> {
     public String toString() {
         StringBuilder res = new StringBuilder();
         res.append("Stack: ");
-        res.append("[ ");
+        res.append("[");
         for (int i = 0; i < array.getSize(); i++) {
             res.append(array.get(i));
             if (i != array.getSize() - 1) {
