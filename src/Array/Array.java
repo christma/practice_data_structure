@@ -58,7 +58,7 @@ public class Array<E> {
         data = newData;
     }
 
-    E get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed, index is illegal.");
         return data[index];
